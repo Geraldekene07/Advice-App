@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import apibtn from "../images/icon-dice.jpg";
 import divider from "../images/pattern-divider-desktop.jpg";
-import dividermb from "../images/pattern-divider-mobile.jpg"
+import dividermb from "../images/pattern-divider-mobile.jpg";
 
 const Main = () => {
-  const [data, setData] = useState("");
+  const [data, setData] = useState({
+    id: 0,
+    advice:
+      "It is easy to sit up and take notice, what's difficult is getting up and taking action.",
+  });
   const [url, setUrl] = useState("https://api.adviceslip.com/advice");
 
   const handleFetch = async () => {
@@ -27,21 +31,22 @@ const Main = () => {
   return (
     <div className="main">
       <div className="body">
-      <h5 className="title">ADVICE #{data.id}</h5><br />
-      {data && (
-        <>
-          <p className="advice">"{data.advice}"</p> <br />
-        </>
-      )}
-      <img className="divider" src={divider} alt="" /> <br />
-      <img className="divider2 d-md-none" src={dividermb} alt="" /> <br />
+        <h5 className="title">ADVICE #{data.id}</h5>
+        <br />
+        {data && (
+          <>
+            <p className="advice">"{data.advice}"</p> <br />
+          </>
+        )}
+        <img className="divider" src={divider} alt="" /> <br />
+        <img className="divider2 d-md-none" src={dividermb} alt="" /> <br />
       </div>
       <div className="body-ii">
-      <form onClick={submit}>
-        <button className="submit" type="submit">
-          <img src={apibtn} alt="API button" />
-        </button>
-      </form>
+        <form onClick={submit}>
+          <button className="submit" type="submit">
+            <img src={apibtn} alt="API button" />
+          </button>
+        </form>
       </div>
     </div>
   );
